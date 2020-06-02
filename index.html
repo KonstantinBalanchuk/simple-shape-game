@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixi mvc game</title>
+    <link rel="stylesheet" href="./src/styles/index.css">
+</head>
+<body>
+<div class="stats-bar">
+    <div class="stats-bar__tab">
+        <div class="stats-bar__label">Current shapes</div>
+        <div id="shapes-number" class="stats-bar__info"></div>
+    </div>
+    <div class="stats-bar__tab">
+        <div class="stats-bar__label">Surface area</div>
+        <div id="surface-area" class="stats-bar__info"></div>
+    </div>
+</div>
+
+<div id="app" class="app"></div>
+
+<div class="bottom-elements">
+    <div class="item">
+        <div class="increments">
+            <div id="decrease-elements" class="decrement__btn">
+                <div class="increment__sign">-</div>
+            </div>
+            <div id="increase-elements" class="increments__btn">
+                <div class="increment__sign">+</div>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="info-block__label">Shapes/sec</div>
+            <div id="shapes-number-per-sec" class="info-block__content"></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="increments increments_shifted">
+            <div id="gravity-decrease" class="decrement__btn">
+                <div class="increment__sign">-</div>
+            </div>
+            <div id="gravity-increase" class="increments__btn">
+                <div class="increment__sign">+</div>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="info-block__label">Gravity Value</div>
+            <div id="gravity-value" class="info-block__content"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

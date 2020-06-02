@@ -1,0 +1,38 @@
+{
+  "name": "simple-shape-game",
+  "version": "1.0.0",
+  "description": "test task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KonstantinBalanchuk/simple-shape-game.git"
+  },
+  "author": "konstantin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KonstantinBalanchuk/simple-shape-game/issues"
+  },
+  "homepage": "https://github.com/KonstantinBalanchuk/simple-shape-game#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "path": "^0.12.7",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "pixi.js": "^5.2.4"
+  }
+}

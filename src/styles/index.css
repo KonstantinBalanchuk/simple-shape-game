@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.stats-bar {
+    display: inline-block;
+}
+
+.stats-bar .stats-bar__tab {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 25px 10px;
+}
+
+.stats-bar .stats-bar__info {
+    display: inline-block;
+    font-size: large;
+    font-weight: bold;
+    vertical-align: middle;
+    width: 3.2em;
+}
+
+.stats-bar .stats-bar__label {
+    display: inline-block;
+    min-width: 200px;
+    vertical-align: middle;
+}
+
+.bottom-elements {
+    padding: 1em 0;
+    display: flex;
+    align-items: center;
+}
+
+.bottom-elements .item {
+    display: flex;
+    flex-direction: column;
+    margin: 0 40px;
+}
+
+.increments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.increments.increments_shifted {
+    margin-left: 1em;
+}
+
+.increments .increment__sign {
+    font-size: 1.9em;
+    line-height: 45px;
+    text-align: center;
+}
+
+.increments .increments__btn, .increments .decrement__btn {
+    display: inline-block;
+    width: 70px;
+    cursor: pointer;
+    height: 50px;
+    text-align: center;
+    background-color: #5abb37;
+    color: #ffffff;
+}
+
+.increments .decrement__btn {
+    border-radius: 10px 0 0 10px;
+    border-right: none;
+}
+
+.increments .increments__btn {
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+    border-left: 1px solid white;
+}
+
+.increments .increments__btn:hover, .increments .decrement__btn:hover {
+    background-color: #b4d7a0;
+}
+
+.info-block {
+    display: inline-block;
+    height: 2.3em;
+    vertical-align: top;
+    margin-top: 20px;
+}
+
+.info-block .info-block__label {
+    width: 8.5em;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.info-block .info-block__content {
+    display: inline-block;
+    width: 1.2em;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 2;
+}
