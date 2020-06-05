@@ -1,4 +1,4 @@
-import {Graphics} from '../utils/pixi';
+import { Graphics } from '../utils/pixi';
 import setting from '../utils/default_settings';
 import actions from '../utils/actions';
 
@@ -38,41 +38,51 @@ export default class AppController {
   }
 
   startAction() {
-    this.addPrimitive();
+    setInterval(() => {
+      window.requestAnimationFrame(() => this.addPrimitive());
+    }, 1000);
+
     this.app.ticker.add(delta => this.gameLoop(delta));
-    this.view.elementCountChange(this.model.getActiveShapes());
+    this.view.elementCountChange(setting.shapesPerSecond);
   }
 
-  addPrimitive(options, constructor) {
-    const newShape = this.model.addShape(options, constructor);
+  addPrimitive(options, constructor, isOnClick) {
+    if (isOnClick === 'click') {
+      const newShape = this.model.addShape(options, constructor);
 
-    this.app.stage.addChild(newShape);
-    newShape.on('pointerdown', this.onShapeClick.bind(this));
+      this.app.stage.addChild(newShape);
+      newShape.on('pointerdown', this.onShapeClick.bind(this));
+
+      return;
+    }
+    if (setting.shapesPerSecond > 0) {
+      for (let i = 0; i < setting.shapesPerSecond; i++) {
+        const newShape = this.model.addShape(options, constructor);
+
+        this.app.stage.addChild(newShape);
+        newShape.on('pointerdown', this.onShapeClick.bind(this));
+      }
+    }
   }
 
   shapeDropped(options) {
     let shape = options.shape;
 
     this.model.deleteShapeFromMemmory(shape.delete())
-    window.requestAnimationFrame(() => this.addPrimitive())
   }
 
   increaseShape(options) {
-    this.addPrimitive(options);
-    this.view.elementCountChange(this.model.getActiveShapes());
+    setting.shapesPerSecond++;
+
+    this.view.elementCountChange(setting.shapesPerSecond);
   }
 
   decreaseShape() {
-    let primitive, activePrimitives;
-
-    activePrimitives = this.model.getActiveShapes();
-
-    if (activePrimitives.length) {
-      primitive = activePrimitives.pop()
-      this.model.deleteShapeFromMemmory(primitive.delete());
+    if (setting.shapesPerSecond > 0) {
+      setting.shapesPerSecond--;
     }
 
-    this.view.elementCountChange(this.model.getActiveShapes());
+    this.view.elementCountChange(setting.shapesPerSecond);
   }
 
   increaseGravity() {
@@ -88,15 +98,15 @@ export default class AppController {
   }
 
   onBackgroundClick(event) {
-    this.addPrimitive({x: event.data.global.x, y: event.data.global.y})
-    this.view.elementCountChange(this.model.getActiveShapes())
+    this.addPrimitive({x: event.data.global.x, y: event.data.global.y}, null, 'click');
+    // this.view.elementCountChange('increase');
   }
 
   onShapeClick(event) {
     this.model.deleteShapeFromMemmory(event.currentTarget.delete());
     const newShapes = this.model.changeShapeColor(event.currentTarget.area);
-    newShapes.map(el => this.addPrimitive(el.options, el.constructor));
-    this.view.elementCountChange(this.model.getActiveShapes());
+    newShapes.map(el => this.addPrimitive(el.options, el.constructor, 'click'));
+    // this.view.elementCountChange('decrease');
   }
 
   gameLoop() {

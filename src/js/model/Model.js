@@ -8,6 +8,7 @@ export default class ModelController {
 
   addShape(options, Constructor) {
     let Primitive, primitiveType;
+
     if(!Constructor) {
       Primitive = this._getRandomShape();
       primitiveType = new Primitive();
@@ -33,8 +34,9 @@ export default class ModelController {
     this.shapes = this.shapes.filter((el) => el.id !== shapeId)
   }
 
-  changeShapeColor(area) {
-    const newShapes = []
+  changeShapeColor(area) {  
+    const newShapes = [];
+
     this.shapes.map(el => {
       if(el.area === area) {
         const ShapeConst = this.allShapes.filter(shape => shape.name === el.constructor.name)
@@ -45,7 +47,7 @@ export default class ModelController {
         }
         el.delete()
         this.deleteShapeFromMemmory(el.id)
-        newShapes.push({constructor: ShapeConst, options: options})
+        newShapes.push({ constructor: ShapeConst, options: options })
       }
     })
 
@@ -58,6 +60,7 @@ export default class ModelController {
 
   shapesCountAndArea() {
     let count = 0, area = 0;
+
     for (let shape of this.shapes) {
       if (shape.isDelete || shape.isDropped) {
         continue;
@@ -67,6 +70,6 @@ export default class ModelController {
       area += shape.getArea()
     }
 
-    return {shapesOnScreenQnt: count, area: area}
+    return { shapesOnScreenQnt: count, area: area }
   }
 }

@@ -29,8 +29,8 @@ export default class ViewController {
     document.querySelector('#gravity-value').innerHTML = gravity;
   }
 
-  elementCountChange(qnt) {
-    document.querySelector('#shapes-number-per-sec').innerHTML = qnt.length;
+  elementCountChange(amount) {
+    document.querySelector('#shapes-number-per-sec').innerHTML = amount;
   }
 
   gameLoop(options) {
