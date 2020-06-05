@@ -42,7 +42,7 @@ export default class BaseShape extends Graphics {
   }
 
   checkIfDropped(shape) {
-    if (shape.y > this.appData.height + this.getBounds().height) {
+    if (shape.y > (this.appData.height + this.getBounds().height)) {
       this.isDropped = true;
       actions.call('dropped', { shape: this });
     }

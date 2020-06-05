@@ -26,10 +26,6 @@ export default class ModelController {
 
   }
 
-  getActiveShapes() {
-    return this.shapes.filter(shape => !shape.isDelete);
-  }
-
   deleteShapeFromMemmory(shapeId) {
     this.shapes = this.shapes.filter((el) => el.id !== shapeId)
   }
