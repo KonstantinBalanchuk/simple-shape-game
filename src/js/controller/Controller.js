@@ -18,6 +18,7 @@ export default class AppController {
     _instance = this;
   }
 
+// initializing canvas background
   init() {
     this.background = new Graphics();
     this.background.beginFill(0xFFFFFF);
@@ -99,14 +100,12 @@ export default class AppController {
 
   onBackgroundClick(event) {
     this.addPrimitive({x: event.data.global.x, y: event.data.global.y}, null, 'click');
-    // this.view.elementCountChange('increase');
   }
 
   onShapeClick(event) {
     this.model.deleteShapeFromMemmory(event.currentTarget.delete());
     const newShapes = this.model.changeShapeColor(event.currentTarget.area);
     newShapes.map(el => this.addPrimitive(el.options, el.constructor, 'click'));
-    // this.view.elementCountChange('decrease');
   }
 
   gameLoop() {

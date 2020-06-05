@@ -6,10 +6,12 @@ import ModelController from './model/Model';
 
 let app;
 
+// settings app width and height
 setting.app = setting.app || {};
 setting.app.width = Math.floor(0.55 * window.innerWidth);
 setting.app.height = Math.floor(0.45 * window.innerHeight);
 
+// initializing pixi application
 app = new Application({
     width: setting.app.width,
     height: setting.app.height,
@@ -19,6 +21,7 @@ app = new Application({
   }
 );
 
+// initializing view, model and controller
 const view = new ViewController();
 const model = new ModelController();
 const controller = new AppController(app, view, model);

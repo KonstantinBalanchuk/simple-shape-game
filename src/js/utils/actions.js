@@ -1,5 +1,6 @@
 let actions;
 
+// actions class for creating and calling functions from different controllers
 class Actions {
 
   constructor() {
